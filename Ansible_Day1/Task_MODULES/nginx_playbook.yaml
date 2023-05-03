@@ -1,0 +1,24 @@
+- name: play1
+  hosts: [servers]
+  gather_facts: no
+  tasks:
+    - name: Update package cache
+      apt:
+        update_cache: true
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: latest
+    - name: Copy index.html to Nginx
+      copy:
+        src: ./index.html
+        dest: /var/www/html/index.html
+    - name: Restart Nginx
+      sysvinit:
+        name: nginx
+        state: restarted
+
+            
+
+
+    
