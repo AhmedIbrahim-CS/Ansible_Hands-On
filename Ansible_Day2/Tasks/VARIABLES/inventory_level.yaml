@@ -1,0 +1,12 @@
+- name: play1
+  hosts: [servers]
+ 
+  gather_facts: no
+
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: "{{ package_name }}"
+        state: "{{ package_state }}"
+   
+    
