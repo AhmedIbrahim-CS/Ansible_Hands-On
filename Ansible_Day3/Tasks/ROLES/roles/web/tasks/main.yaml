@@ -1,0 +1,25 @@
+- name: install
+  apt:
+    name: "{{ package_name }}"
+    state: latest
+  register: result
+- name: Copy files
+  copy:
+    src: "{{ item }}"
+    dest: "/var/www/html/{{ item }}"
+  loop: "{{ file_list }}"
+  when: result.changed == true
+  register: copying_output
+
+
+- name: Restart
+  sysvinit:
+    name: nginx
+    state: restarted
+  when: copying_output.changed == true
+
+
+
+
+
+  

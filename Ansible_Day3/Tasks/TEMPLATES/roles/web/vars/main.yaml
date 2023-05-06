@@ -1,0 +1,6 @@
+    package_name: nginx
+    page_title: "My Page"
+    page_heading: "Welcome to My Page"
+    message_class: "message"
+    css_file: "style.css"
+    js_file: "script.js"

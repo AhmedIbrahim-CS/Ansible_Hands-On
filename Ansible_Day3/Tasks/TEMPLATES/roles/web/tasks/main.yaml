@@ -1,0 +1,8 @@
+- name: Install package
+  apt:
+    name: "{{ package_name }}"
+    state: latest
+  notify:
+    - Copy index.html.j2
+    - Copy styles
+    - Copy scripts

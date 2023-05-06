@@ -1,0 +1,25 @@
+- name: Copy styles
+  copy:
+    src: "style.css"
+    dest: "/var/www/html"
+  notify: Restart service
+
+- name: Copy scripts
+  copy:
+    src: "script.js"
+    dest: "/var/www/html"
+  notify: Restart service
+
+- name: Copy index.html.j2
+  template:
+    src: "index.html.j2"
+    dest: "/var/www/html/index.html" 
+  notify: Restart service
+
+
+
+
+- name: Restart service
+  sysvinit:
+    name: nginx
+    state: restarted
